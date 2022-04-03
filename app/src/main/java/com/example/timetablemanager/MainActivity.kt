@@ -3,8 +3,10 @@ package com.example.timetablemanager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var dayViewText: TextView
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         dayViewText=findViewById(R.id.dayview)
         weekViewText=findViewById(R.id.weekview)
         AddTaskButton=findViewById(R.id.add_task_button)
+
         dayViewText.setOnClickListener{
 
             val intent = Intent(this,DayViewActivity::class.java)
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
     }
 }

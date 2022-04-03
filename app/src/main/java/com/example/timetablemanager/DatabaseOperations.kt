@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+import java.util.*
 
 class DatabaseOperations(context: Context): SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -46,7 +47,7 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
         val rowID = db.insert(DatabaseInfo.TableInfo.TABLE_NAME, null, contentValues)
     }
 
-    fun getAllItems(dbo: DatabaseOperations): Cursor {
+    fun getTodaysItems(dbo: DatabaseOperations): Cursor {
         val db = dbo.readableDatabase
         val projection = arrayOf(
             BaseColumns._ID,
@@ -54,8 +55,8 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
             DatabaseInfo.TableInfo.COLUMN_ITEM_START,
             DatabaseInfo.TableInfo.COLUMN_ITEM_END,
             DatabaseInfo.TableInfo.COLUMN_DATE)
-        val selection = ""
-        val selectionArgs = null
+        val selection = DatabaseInfo.TableInfo.COLUMN_DATE+ "=?"
+        val selectionArgs = arrayOf(getDateAsString())
         val sortOrder = null
 
         val cursor = db.query(
@@ -96,5 +97,11 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
 //
 //        val deletedRows = db.delete(DatabaseInfo.TableInfo.TABLE_NAME, selection, selectionArgs)
 //    }
-
+    fun getDateAsString(): String {
+        val date = Calendar.getInstance()
+        val year = date.get(Calendar.YEAR).toString()
+        val month = date.get(Calendar.MONTH).toString()
+        val day = date.get(Calendar.DAY_OF_MONTH).toString()
+        return "$year/$month/$day"
+    }
 }
