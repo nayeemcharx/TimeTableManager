@@ -24,6 +24,22 @@ class TaskEditorActivity : AppCompatActivity() {
         date=findViewById(R.id.editDate)
         saveButton=findViewById(R.id.saveButton)
         cancelButton=findViewById(R.id.cancelButton)
+
+
+        val itemName = intent.getStringExtra("ITEM_NAME")
+        val itemStart = intent.getStringExtra("ITEM_START")
+        val itemEnd = intent.getStringExtra("ITEM_END")
+        val itemDate = intent.getStringExtra("ITEM_DATE")
+
+        if(itemName!=null)
+            taskName.setText(itemName)
+        if(itemStart!=null)
+            startTime.setText(itemStart)
+        if(itemName!=null)
+            endTime.setText(itemEnd)
+        if(itemName!=null)
+            date.setText(itemDate)
+
         saveButton.setOnClickListener {
             val itemName=taskName.text.toString()
             val start=startTime.text.toString()
