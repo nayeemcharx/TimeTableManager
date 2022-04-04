@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+import android.util.Log
 import java.util.*
 
 class DatabaseOperations(context: Context): SQLiteOpenHelper(
@@ -70,38 +71,46 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
         )
         return cursor
     }
-//
-//    fun updateItem(dbo: DatabaseOperations, oldItem: TodoItem, newItem: TodoItem) {
-//        val db = dbo.writableDatabase
-//        val itemName = newItem.name
-//        val isItemUrgent = newItem.isUrgent
-//        val itemUrgency = if (isItemUrgent) 1 else 0
-//        val itemDate = newItem.getDateAsString()
-//
-//        val contentValues = ContentValues().apply {
-//            put(DatabaseInfo.TableInfo.COLUMN_ITEM_NAME, itemName)
-//            put(DatabaseInfo.TableInfo.COLUMN_ITEM_URGENCY, itemUrgency)
-//            put(DatabaseInfo.TableInfo.COLUMN_DATE, itemDate)
-//        }
-//
-//        val selection = "${DatabaseInfo.TableInfo.COLUMN_ITEM_NAME} LIKE ?"
-//        val selectionArgs = arrayOf(oldItem.name)
-//
-//        val count = db.update(DatabaseInfo.TableInfo.TABLE_NAME, contentValues, selection, selectionArgs)
-//    }
-//
-//    fun deleteItem(dbo: DatabaseOperations, todoItem: TodoItem) {
-//        val db = dbo.writableDatabase
-//        val selection = "${DatabaseInfo.TableInfo.COLUMN_ITEM_NAME} LIKE ?"
-//        val selectionArgs = arrayOf(todoItem.name)
-//
-//        val deletedRows = db.delete(DatabaseInfo.TableInfo.TABLE_NAME, selection, selectionArgs)
-//    }
+
+    fun updateItem(dbo: DatabaseOperations, oldItem: Task, newItem: Task) {
+        val db = dbo.writableDatabase
+        val item = newItem.name
+        val start =newItem.startTime
+        val end=newItem.endTime
+        val date=newItem.dateToDo
+
+        val contentValues = ContentValues().apply {
+            put(DatabaseInfo.TableInfo.COLUMN_ITEM_NAME, item)
+            put(DatabaseInfo.TableInfo.COLUMN_ITEM_START, start)
+            put(DatabaseInfo.TableInfo.COLUMN_ITEM_END, end)
+            put(DatabaseInfo.TableInfo.COLUMN_DATE, date)
+        }
+
+        val selection = "${DatabaseInfo.TableInfo.COLUMN_ITEM_NAME} LIKE ? AND "+
+                "${DatabaseInfo.TableInfo.COLUMN_ITEM_START} LIKE ? AND "+
+                "${DatabaseInfo.TableInfo.COLUMN_ITEM_END} LIKE ? AND "+
+                "${DatabaseInfo.TableInfo.COLUMN_DATE} LIKE ?"
+        val selectionArgs = arrayOf(oldItem.name,oldItem.startTime,oldItem.endTime,oldItem.dateToDo)
+
+        val count = db.update(DatabaseInfo.TableInfo.TABLE_NAME, contentValues, selection, selectionArgs)
+    }
+
+    fun deleteItem(dbo: DatabaseOperations, todoItem: Task) {
+        val db = dbo.writableDatabase
+        val selection = "${DatabaseInfo.TableInfo.COLUMN_ITEM_NAME} LIKE ? AND "+
+                "${DatabaseInfo.TableInfo.COLUMN_ITEM_START} LIKE ? AND "+
+                "${DatabaseInfo.TableInfo.COLUMN_ITEM_END} LIKE ? AND "+
+                "${DatabaseInfo.TableInfo.COLUMN_DATE} LIKE ?"
+        val selectionArgs = arrayOf(todoItem.name,todoItem.startTime,todoItem.endTime,todoItem.dateToDo)
+
+        val deletedRows = db.delete(DatabaseInfo.TableInfo.TABLE_NAME, selection, selectionArgs)
+    }
     fun getDateAsString(): String {
         val date = Calendar.getInstance()
         val year = date.get(Calendar.YEAR).toString()
-        val month = date.get(Calendar.MONTH).toString()
+        val month = (date.get(Calendar.MONTH)+1).toString()
         val day = date.get(Calendar.DAY_OF_MONTH).toString()
+        Log.d("today's date","$year/$month/$day")
         return "$year/$month/$day"
     }
 }

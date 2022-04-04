@@ -33,17 +33,17 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: DayViewAc
             activity.startActivity(intent)
         })
 
-//        constraintLayout.setOnLongClickListener(View.OnLongClickListener {
-//            val position: Int = parent.indexOfChild(it)
-//
-//            val todoItemToRemove = todoItemsList[position]
-//            val dbo = DatabaseOperations(parent.context)
-//            dbo.deleteItem(dbo, todoItemToRemove)
-//
-//            todoItemsList.removeAt(position)
-//            notifyItemRemoved(position)
-//            true
-//        })
+        constraintLayout.setOnLongClickListener(View.OnLongClickListener {
+            val position: Int = parent.indexOfChild(it)
+
+            val todoItemToRemove = taskList[position]
+            val dbo = DatabaseOperations(parent.context)
+            dbo.deleteItem(dbo, todoItemToRemove)
+
+            taskList.removeAt(position)
+            notifyItemRemoved(position)
+            true
+        })
 
         return ViewHolder(constraintLayout)
     }
