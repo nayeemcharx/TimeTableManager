@@ -65,7 +65,7 @@
         android:layout_width="143dp"
         android:layout_height="41dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="none|time"
         android:text="11:00"
         app:layout_constraintBottom_toTopOf="@id/dateText"
         app:layout_constraintLeft_toRightOf="@id/editStartTime"

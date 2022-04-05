@@ -5,49 +5,177 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context=".MainActivity">
-    <TextView
-        android:id="@+id/welcome"
-        android:textSize="32dp"
-        android:typeface="serif"
-        android:layout_width="wrap_content"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        app:layout_constraintBottom_toTopOf="@+id/dayview"
+        android:background="@drawable/back_ground"
+        android:elevation="4dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/dayview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dayview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/weekview"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"/>
-    <TextView
-        android:id="@+id/weekview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weekview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/dayview"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"/>
 
-    <Button
-        android:id="@+id/add_task_button"
-        android:layout_width="55dp"
-        android:layout_height="61dp"
-        android:text="+"
-        android:background="@drawable/roundbutton"
+
+            <!--<TextView
+                android:id="@+id/welcome"
+                android:textSize="32dp"
+                android:typeface="serif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome"
+                app:layout_constraintBottom_toTopOf="@+id/dayview"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>-->
+
+
+
+    <DigitalClock
+        android:id="@+id/clock"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="23dp"
+        android:fontFamily="@font/digital_fonts"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:textStyle=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias=".9"
-        app:layout_constraintVertical_bias=".9"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.07"
+        android:background="@drawable/ring">
+
+    </DigitalClock>
+
+
+
+
+
+  <!--  <io.armcha.elasticview.ElasticView
+        android:id="@+id/nextalarm"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="23dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="1dp"
+        app:flexibility="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.2">
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/welcome"
+                android:textSize="26dp"
+                android:typeface="serif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Next reminder"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/welcome2"
+                android:textSize="26dp"
+                android:typeface="serif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8 Hours remaining"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textStyle="bold">
+
+            </TextView>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </io.armcha.elasticview.ElasticView>
+-->
+        <TextView
+            android:id="@+id/dayview"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Dayview"
+            app:layout_constraintTop_toBottomOf="@id/clock"
+            app:layout_constraintBottom_toTopOf="@id/add_task_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/weekview"
+            android:padding="5dp"
+            android:background="@drawable/button_style1"
+            android:textColor="@color/white" />
+
+
+        <TextView
+            android:id="@+id/weekview"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Weekview"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/clock"
+            app:layout_constraintBottom_toTopOf="@id/add_task_button"
+            app:layout_constraintLeft_toRightOf="@+id/dayview"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/button_style1"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_task_button"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_style1"
+            android:paddingLeft="50dp"
+            android:drawableStart="@drawable/ic_baseline_add_24"
+            android:gravity="center"
+            android:padding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weekview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".9"
+             />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
