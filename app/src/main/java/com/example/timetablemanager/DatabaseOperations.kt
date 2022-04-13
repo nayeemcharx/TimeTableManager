@@ -48,7 +48,7 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
         val rowID = db.insert(DatabaseInfo.TableInfo.TABLE_NAME, null, contentValues)
     }
 
-    fun getTodaysItems(dbo: DatabaseOperations): Cursor {
+    fun getItems(dbo: DatabaseOperations,date:String): Cursor {
         val db = dbo.readableDatabase
         val projection = arrayOf(
             BaseColumns._ID,
@@ -57,7 +57,7 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
             DatabaseInfo.TableInfo.COLUMN_ITEM_END,
             DatabaseInfo.TableInfo.COLUMN_DATE)
         val selection = DatabaseInfo.TableInfo.COLUMN_DATE+ "=?"
-        val selectionArgs = arrayOf(getDateAsString())
+        val selectionArgs = arrayOf(date)
         val sortOrder = null
 
         val cursor = db.query(
@@ -104,13 +104,5 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
         val selectionArgs = arrayOf(todoItem.name,todoItem.startTime,todoItem.endTime,todoItem.dateToDo)
 
         val deletedRows = db.delete(DatabaseInfo.TableInfo.TABLE_NAME, selection, selectionArgs)
-    }
-    fun getDateAsString(): String {
-        val date = Calendar.getInstance()
-        val year = date.get(Calendar.YEAR).toString()
-        val month = (date.get(Calendar.MONTH)+1).toString()
-        val day = date.get(Calendar.DAY_OF_MONTH).toString()
-        Log.d("today's date","$year/$month/$day")
-        return "$year/$month/$day"
     }
 }

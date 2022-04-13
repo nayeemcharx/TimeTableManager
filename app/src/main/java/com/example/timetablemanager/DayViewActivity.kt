@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DayViewActivity : AppCompatActivity() {
     var todoItemsList = ArrayList<Task>()
@@ -18,7 +20,7 @@ class DayViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_day_view)
 
         val dbo = DatabaseOperations(this)
-        val cursor = dbo.getTodaysItems(dbo)
+        val cursor = dbo.getItems(dbo,getDateAsString())
         with(cursor) {
             while(moveToNext()) {
                 val itemName = getString(getColumnIndex(DatabaseInfo.TableInfo.COLUMN_ITEM_NAME))
@@ -47,5 +49,13 @@ class DayViewActivity : AppCompatActivity() {
             Log.d("iteminfodate",item.dateToDo)
 
         }
+    }
+    private fun getDateAsString(): String {
+        val date = Calendar.getInstance()
+        val year = date.get(Calendar.YEAR).toString()
+        val month = (date.get(Calendar.MONTH)+1).toString()
+        val day = date.get(Calendar.DAY_OF_MONTH).toString()
+        Log.d("today's date","$year/$month/$day")
+        return "$year/$month/$day"
     }
 }
