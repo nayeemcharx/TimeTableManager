@@ -1,14 +1,16 @@
 package com.example.timetablemanager
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class TaskAdapter(private val taskList: ArrayList<Task>, val activity: DayViewActivity):
+class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentActivity?):
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     class ViewHolder(val constraintLayout: ConstraintLayout): RecyclerView.ViewHolder(constraintLayout)
@@ -25,12 +27,13 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: DayViewAc
             val start=startTimeView.text
             val end=endTimeView.text
 
-            val intent: Intent = Intent(parent.context, TaskEditorActivity::class.java)
+            val intent: Intent = Intent(activity, TaskEditorActivity::class.java)
             intent.putExtra("ITEM_NAME", nameText)
             intent.putExtra("ITEM_START", start)
             intent.putExtra("ITEM_END", end)
             intent.putExtra("ITEM_DATE", taskList[0].dateToDo)
-            activity.startActivity(intent)
+            activity?.startActivity(intent)
+            activity?.finish()
         })
 
         constraintLayout.setOnLongClickListener(View.OnLongClickListener {
