@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 
 class dayViewFragment : Fragment() {
+
+    private lateinit var itemRecyclerView: RecyclerView
+    private lateinit var recyclerAdapter: dayViewAdapter
+    private lateinit var recyclerLayoutManager:RecyclerView.LayoutManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
