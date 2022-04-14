@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TimeTableManager</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="dayView">DayView</string>
+    <string name="weekView">WeekView</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
