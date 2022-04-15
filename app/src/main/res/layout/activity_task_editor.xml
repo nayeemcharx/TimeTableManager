@@ -31,17 +31,19 @@
 
         <TimePicker
             android:id="@+id/start_time_picker"
+            android:theme="@style/timePickerSizeIncrease"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:timePickerMode="spinner"
             android:layout_gravity="center"
-            android:scaleY="0.7"
-            android:scaleX="0.7"
             android:layout_marginLeft="-30dp"
-            android:layout_marginRight="-30dp"/>
+            android:layout_marginRight="-30dp"
+            android:layout_weight="1"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:timePickerMode="spinner" />
         <TimePicker
             android:id="@+id/end_time_picker"
+            android:theme="@style/timePickerSizeIncrease"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -50,10 +52,11 @@
             android:scaleY="0.7"
             android:scaleX="0.7"
             android:layout_marginLeft="-30dp"
-            android:layout_marginRight="-30dp"/>
+            android:layout_marginRight="-30dp" />
     </LinearLayout>
     <DatePicker
         android:id="@+id/date_picker"
+        android:theme="@style/timePickerSizeIncrease"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
@@ -64,8 +67,7 @@
         android:scaleY="0.7"
         android:scaleX="0.7"
         android:layout_marginLeft="-30dp"
-        android:layout_marginRight="-30dp"
-        />
+        android:layout_marginRight="-30dp" />
     <Button
         android:id="@+id/save_button"
         android:layout_marginTop="10dp"

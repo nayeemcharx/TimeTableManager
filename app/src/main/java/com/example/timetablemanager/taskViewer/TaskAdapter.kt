@@ -24,9 +24,11 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
 
         constraintLayout.setOnClickListener(View.OnClickListener {
             val nameTextView = constraintLayout.getChildAt(0) as TextView
-            val startTimeView = constraintLayout.getChildAt(1) as TextView
-            val endTimeView = constraintLayout.getChildAt(2) as TextView
+            val dateTextView=constraintLayout.getChildAt(1) as TextView
+            val startTimeView = constraintLayout.getChildAt(2) as TextView
+            val endTimeView = constraintLayout.getChildAt(3) as TextView
             val nameText = nameTextView.text
+            val date=dateTextView.text
             val start=startTimeView.text
             val end=endTimeView.text
 
@@ -57,9 +59,11 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val constraintLayout = holder.constraintLayout
         val nameTextView = constraintLayout.getChildAt(0) as TextView
-        val startTimeView = constraintLayout.getChildAt(1) as TextView
-        val endTimeView = constraintLayout.getChildAt(2) as TextView
+        val date=constraintLayout.getChildAt(1) as TextView
+        val startTimeView = constraintLayout.getChildAt(2) as TextView
+        val endTimeView = constraintLayout.getChildAt(3) as TextView
         nameTextView.text = taskList[position].name
+        date.text=taskList[position].dateToDo
         startTimeView.text=taskList[position].startTime
         endTimeView.text=taskList[position].endTime
 

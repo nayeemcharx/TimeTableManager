@@ -1,41 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="120dp"
+    android:clickable="true"
+    android:longClickable="true"
+    android:background="@drawable/task_layout_background">
+
     <TextView
         android:id="@+id/taskname"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HELLO"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/taskstart"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/taskstart"
+        app:layout_constraintEnd_toStartOf="@id/date_of_task"
+        app:layout_constraintHorizontal_weight=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date_of_task"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/digital_fonts"
+        android:gravity="center_vertical"
+        android:text="date"
+        android:textColor="@color/background_card"
+        android:textSize="25sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@id/taskstart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight=".5"
+        app:layout_constraintStart_toEndOf="@+id/taskname"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/taskstart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="11:00"
-        android:textColor="@color/black"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/digital_fonts"
+        android:gravity="center_vertical"
+        android:text="startTime"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/taskname"
-        app:layout_constraintRight_toLeftOf="@id/taskend"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintEnd_toStartOf="@id/taskend"
+        app:layout_constraintHorizontal_weight=".50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taskname" />
 
     <TextView
         android:id="@+id/taskend"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="11:30"
-        android:textColor="@color/black"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/digital_fonts"
+        android:gravity="center_vertical"
+        android:text="endTime"
+        android:textColor="@color/background_card"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/taskstart"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight=".5"
+        app:layout_constraintStart_toEndOf="@+id/taskstart"
+        app:layout_constraintTop_toBottomOf="@id/taskname" />
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
