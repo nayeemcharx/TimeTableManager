@@ -1,4 +1,4 @@
-package com.example.timetablemanager
+package com.example.timetablemanager.databaseHandler
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,8 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
-import android.util.Log
-import java.util.*
+import com.example.timetablemanager.taskScheduler.Task
 
 class DatabaseOperations(context: Context): SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -48,7 +47,7 @@ class DatabaseOperations(context: Context): SQLiteOpenHelper(
         val rowID = db.insert(DatabaseInfo.TableInfo.TABLE_NAME, null, contentValues)
     }
 
-    fun getItems(dbo: DatabaseOperations,date:String): Cursor {
+    fun getItems(dbo: DatabaseOperations, date:String): Cursor {
         val db = dbo.readableDatabase
         val projection = arrayOf(
             BaseColumns._ID,

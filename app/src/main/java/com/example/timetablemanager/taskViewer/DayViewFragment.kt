@@ -1,4 +1,4 @@
-package com.example.timetablemanager
+package com.example.timetablemanager.taskViewer
 
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.timetablemanager.R
+import com.example.timetablemanager.databaseHandler.DatabaseInfo
+import com.example.timetablemanager.databaseHandler.DatabaseOperations
+import com.example.timetablemanager.taskScheduler.Task
 import java.util.*
 
 
-class dayViewFragment : Fragment() {
+class DayViewFragment : Fragment() {
 
     var todoItemsList = ArrayList<Task>()
 

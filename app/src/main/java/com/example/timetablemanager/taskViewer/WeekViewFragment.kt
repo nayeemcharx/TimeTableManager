@@ -1,4 +1,4 @@
-package com.example.timetablemanager
+package com.example.timetablemanager.taskViewer
 
 import android.os.Bundle
 import android.util.Log
@@ -6,10 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.timetablemanager.R
+import com.example.timetablemanager.databaseHandler.DatabaseInfo
+import com.example.timetablemanager.databaseHandler.DatabaseOperations
+import com.example.timetablemanager.taskScheduler.Task
 import java.util.*
 
 
-class weekViewFragment : Fragment() {
+class WeekViewFragment : Fragment() {
     var todoItemsList = arrayOf(ArrayList<Task>())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

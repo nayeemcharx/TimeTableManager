@@ -30,7 +30,7 @@
         android:layout_marginTop="20dp">
 
         <TimePicker
-            android:id="@+id/end_time_picker"
+            android:id="@+id/start_time_picker"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             android:layout_marginLeft="-30dp"
             android:layout_marginRight="-30dp"/>
         <TimePicker
-            android:id="@+id/start_time_picker"
+            android:id="@+id/end_time_picker"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

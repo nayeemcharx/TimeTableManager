@@ -1,6 +1,5 @@
-package com.example.timetablemanager
+package com.example.timetablemanager.taskViewer
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,10 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.timetablemanager.R
+import com.example.timetablemanager.databaseHandler.DatabaseOperations
+import com.example.timetablemanager.taskScheduler.Task
+import com.example.timetablemanager.taskScheduler.TaskEditorActivity
 
 class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentActivity?):
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
@@ -17,7 +20,7 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val constraintLayout = LayoutInflater.from(parent.context).inflate(
-            R.layout.task_layout, parent, false) as ConstraintLayout
+                R.layout.task_layout, parent, false) as ConstraintLayout
 
         constraintLayout.setOnClickListener(View.OnClickListener {
             val nameTextView = constraintLayout.getChildAt(0) as TextView
