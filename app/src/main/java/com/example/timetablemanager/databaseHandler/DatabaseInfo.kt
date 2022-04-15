@@ -1,4 +1,4 @@
-package com.example.timetablemanager
+package com.example.timetablemanager.databaseHandler
 import android.provider.BaseColumns
 object DatabaseInfo {
 
