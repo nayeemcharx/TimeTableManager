@@ -19,7 +19,7 @@
             android:layout_height="?actionBarSize"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@color/colorPrimary"
+            android:background="@color/primary"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             app:layout_constraintTop_toTopOf="parent">
