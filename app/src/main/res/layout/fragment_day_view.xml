@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".DayViewActivity">
+    tools:context=".taskViewer.DayViewFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/task_recyler_view"
+        android:id="@+id/task_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

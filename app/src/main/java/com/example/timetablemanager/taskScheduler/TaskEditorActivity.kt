@@ -83,10 +83,10 @@ class TaskEditorActivity : AppCompatActivity() {
 
             scheduleNotification()
 
-//            val intent: Intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-
+         /*   val intent: Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+*/
         }
 
         cancelButton.setOnClickListener{
