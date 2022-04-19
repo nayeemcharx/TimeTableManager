@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.timetablemanager.R
 import com.example.timetablemanager.databaseHandler.DatabaseInfo
 import com.example.timetablemanager.databaseHandler.DatabaseOperations
@@ -14,7 +17,16 @@ import java.util.*
 
 
 class WeekViewFragment : Fragment() {
-    var todoItemsList = arrayOf(ArrayList<Task>())
+    var todoItemsListSun = ArrayList<Task>()
+    var todoItemsListMon= ArrayList<Task>()
+
+    private lateinit var taskRecyclerView: RecyclerView
+    private lateinit var recyclerAdapter: TaskAdapter
+    private lateinit var recyclerLayoutManager: RecyclerView.LayoutManager
+    private lateinit var sundayButton:Button
+    private lateinit var mondayButton: Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,6 +41,10 @@ class WeekViewFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sundayButton=view.findViewById(R.id.sun_button)
+        mondayButton=view.findViewById(R.id.mon_button)
+
+
         val date=Calendar.getInstance()
         while(date.get(Calendar.DAY_OF_WEEK)!=1)
         {
@@ -49,13 +65,33 @@ class WeekViewFragment : Fragment() {
                     val itemEnd = getString(getColumnIndex(DatabaseInfo.TableInfo.COLUMN_ITEM_END))
                     val itemDate = getString(getColumnIndex(DatabaseInfo.TableInfo.COLUMN_DATE))
                     val task = Task(itemName, itemStart,itemEnd,itemDate)
-                    //todoItemsList[i].add(task)
+                    if(i==0)todoItemsListSun.add(task)
+                    if(i==1)todoItemsListMon.add((task))
                     Log.d("testing","$i $itemName $itemStart $itemEnd $itemDate")
                 }
             }
             date.add(Calendar.DATE,1)
         }
-        //todoItemsList[day_of_week] returns list of tasks on that day. sunday to saturday is 0 to 6
+        taskRecyclerView=view.findViewById(R.id.task_recycler_view_week)
+        val activity= activity
+        recyclerLayoutManager = LinearLayoutManager(activity)
+        sundayButton.setOnClickListener{
+
+            recyclerAdapter = TaskAdapter(todoItemsListSun,activity)
+            taskRecyclerView.apply {
+                setHasFixedSize(true)
+                layoutManager = recyclerLayoutManager
+                adapter = recyclerAdapter
+            }
+        }
+        mondayButton.setOnClickListener {
+            recyclerAdapter = TaskAdapter(todoItemsListMon,activity)
+            taskRecyclerView.apply {
+                setHasFixedSize(true)
+                layoutManager = recyclerLayoutManager
+                adapter = recyclerAdapter
+            }
+        }
 
 
     }

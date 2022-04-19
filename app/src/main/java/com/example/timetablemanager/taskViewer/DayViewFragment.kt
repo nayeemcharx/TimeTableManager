@@ -52,6 +52,9 @@ class DayViewFragment : Fragment() {
                 Log.d("task name","${task.name} ${task.dateToDo}")
             }
         }
+        todoItemsList.sortBy { it.startTimeInMinutes }
+
+
         taskRecyclerView=view.findViewById(R.id.task_recycler_view)
         val activity= activity
         recyclerLayoutManager = LinearLayoutManager(activity)
