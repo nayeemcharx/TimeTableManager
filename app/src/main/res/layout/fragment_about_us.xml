@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="This App is designed and developed by Nayeemuzzaman and Rafid Ahmed."
+            android:text="this application is designed and developed by nayeemuzzaman and rafid Ahmed as a part of course project"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />

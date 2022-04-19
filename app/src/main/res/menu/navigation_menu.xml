@@ -10,12 +10,12 @@
     <item
         android:id="@+id/dayView"
         android:icon="@drawable/ic_baseline_view_day_24"
-        android:title="DayView"/>
+        android:title="Dayview"/>
 
     <item
         android:id="@+id/weekView"
         android:icon="@drawable/ic_baseline_view_week_24"
-        android:title="weekView"/>
+        android:title="Weekview"/>
 
 
 

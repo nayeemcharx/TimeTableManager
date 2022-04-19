@@ -26,13 +26,13 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
             val nameTextView = constraintLayout.getChildAt(0) as TextView
             val dateTextView=constraintLayout.getChildAt(1) as TextView
             val startTimeView = constraintLayout.getChildAt(2) as TextView
-            val endTimeView = constraintLayout.getChildAt(3) as TextView
+            val weekTextView = constraintLayout.getChildAt(3) as TextView
             val nameText = nameTextView.text
             val date=dateTextView.text
             val runningTime=startTimeView.text
             val start=runningTime.split("-")[0]
             val end=runningTime.split("-")[1]
-            val week=endTimeView.text
+            val week=weekTextView.text
 
             val intent: Intent = Intent(activity, TaskEditorActivity::class.java)
             intent.putExtra("ITEM_NAME", nameText)
@@ -63,12 +63,21 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
         val nameTextView = constraintLayout.getChildAt(0) as TextView
         val date=constraintLayout.getChildAt(1) as TextView
         val startTimeView = constraintLayout.getChildAt(2) as TextView
-        val endTimeView = constraintLayout.getChildAt(3) as TextView
+        val weekTextView = constraintLayout.getChildAt(3) as TextView
         nameTextView.text = taskList[position].name
-        date.text=taskList[position].dateToDo
+        val dateToDo=addMonthOne(taskList[position].dateToDo)
+        date.text=dateToDo
         startTimeView.text="${taskList[position].startTime}-${taskList[position].endTime}"
-        endTimeView.text=taskList[position].week
+        weekTextView.text=taskList[position].week
 
+    }
+
+    private fun addMonthOne(dateToDo: String):String {
+        val list=dateToDo.split("/")
+        val year=list[0]
+        val month=(list[1].toInt()+1).toString()
+        val day=list[2]
+        return "${day}/${month}/${year}"
     }
 
     override fun getItemCount(): Int {

@@ -95,9 +95,10 @@ class TaskEditorActivity : AppCompatActivity() {
                 } else {
                     dbo.updateItem(dbo, oldTask, task)
                 }
-                createNotificationChannel()
-                scheduleNotification()
-
+                if(Global.notif) {
+                    createNotificationChannel()
+                    scheduleNotification()
+                }
                 //            val intent: Intent = Intent(this, MainActivity::class.java)
                 //            startActivity(intent)
                 //            finish()

@@ -55,7 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Welcome to Time Table Manager. Press to add tasks"
+            android:textAlignment="center"
+            android:text="welcome \n Press to add something you want to do"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
