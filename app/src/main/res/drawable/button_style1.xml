@@ -12,7 +12,7 @@
         </shape>
     </item>
     <item>
-        <shape android:shape="rectangle">
+        <shape android:shape="oval">
             <corners android:radius="10dp" />
             <gradient
                 android:angle="45"

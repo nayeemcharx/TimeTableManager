@@ -3,10 +3,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="80dp"
     android:clickable="true"
     android:longClickable="true"
-    android:background="@drawable/task_layout_background">
+    android:background="@drawable/round_back_white10_20">
 
     <TextView
         android:id="@+id/taskname"
@@ -16,6 +16,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center_vertical"
         android:text="Name"
+        android:fontFamily="sans-serif-smallcaps"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/taskstart"
