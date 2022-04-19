@@ -2,6 +2,7 @@ package com.example.timetablemanager.taskViewer
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,7 @@ class DashboardFragment : Fragment() {
         AddTaskButton.setOnClickListener{
             val intent = Intent (activity, TaskEditorActivity::class.java)
             activity?.startActivity(intent)
+            Log.d("testing","redirection successfull")
             activity?.finish()
 
         }

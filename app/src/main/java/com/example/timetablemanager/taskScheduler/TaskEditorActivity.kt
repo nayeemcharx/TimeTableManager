@@ -35,12 +35,10 @@ class TaskEditorActivity : AppCompatActivity() {
         cancelButton=findViewById(R.id.cancel_button)
 
         var editingItem=false;
-
         val itemName = intent.getStringExtra("ITEM_NAME")
         val itemStart = intent.getStringExtra("ITEM_START")
         val itemEnd = intent.getStringExtra("ITEM_END")
         val itemDate = intent.getStringExtra("ITEM_DATE")
-
         if(itemName!=null) {
             taskName.setText(itemName)
             editingItem=true;
@@ -56,37 +54,54 @@ class TaskEditorActivity : AppCompatActivity() {
             endTime.hour=list[0].toInt()
             endTime.minute=list[1].toInt()
         }
+        Log.d("testing","${itemName} ${itemStart} ${itemEnd} ${itemDate}")
 
         lateinit var oldTask: Task
         if(editingItem)
             oldTask= Task(itemName!!,itemStart!!,itemEnd!!,itemDate!!)
 
 
-        createNotificationChannel()
-
         saveButton.setOnClickListener {
+
             val item=taskName.text.toString()
             val start="${startTime.hour}:${startTime.minute}"
             val end="${endTime.hour}:${endTime.minute}"
             val dateToDo="${date.year}/${date.month}/${date.dayOfMonth}"
             val task= Task(item,start,end,dateToDo)
-            Log.d("task created", task.name)
-            val dbo = DatabaseOperations(this)
-            if(!editingItem)
-            {
-                dbo.addItem(dbo, task)
-            }
-            else
-            {
-                dbo.updateItem(dbo, oldTask, task)
-            }
 
-            scheduleNotification()
+            var invalidName=false
+            if(item.isEmpty())
+                invalidName=true
 
-         /*   val intent: Intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-*/
+            var invalidEndtime=false
+            if(startTime.hour>endTime.hour)
+                invalidEndtime=true
+            if(startTime.hour==endTime.hour && startTime.minute>=endTime.minute)
+                invalidEndtime=true
+
+            if(invalidEndtime)
+            {
+                show("Pick a valid Time")
+            }
+            else if(invalidName)
+            {
+                show("Please fill in a task name")
+            }
+            else {
+                val dbo = DatabaseOperations(this)
+                if (!editingItem) {
+                    dbo.addItem(dbo, task)
+                    Log.d("testing:add successful",task.name)
+                } else {
+                    dbo.updateItem(dbo, oldTask, task)
+                }
+                createNotificationChannel()
+                scheduleNotification()
+
+                //            val intent: Intent = Intent(this, MainActivity::class.java)
+                //            startActivity(intent)
+                //            finish()
+            }
         }
 
         cancelButton.setOnClickListener{
@@ -161,5 +176,9 @@ class TaskEditorActivity : AppCompatActivity() {
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
+    private fun show(message:String) {
+        Toast.makeText(
+                this.baseContext, message, Toast.LENGTH_SHORT).show()
 
+    }
 }

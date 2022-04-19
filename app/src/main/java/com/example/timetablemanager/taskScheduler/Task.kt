@@ -8,13 +8,12 @@ class Task(var name:String,var start: String, end:String, date:String)
     var startTime=start
     var endTime=end
     var dateToDo=date
-    var dateToday = Calendar.getInstance()
-    var dateString: String = getDateAsString()
-
-    fun getDateAsString(): String {
-        val year = dateToday.get(Calendar.YEAR).toString()
-        val month = dateToday.get(Calendar.MONTH).toString()
-        val day = dateToday.get(Calendar.DAY_OF_MONTH).toString()
-        return "$year/$month/$day"
+    var startTimeInMinutes=timeInMinutes(startTime)
+    private fun timeInMinutes(start:String):Int
+    {
+        val x=start.split(":")
+        val min=(x[0].toInt()*60)+x[1].toInt()
+        return min
     }
+
 }
