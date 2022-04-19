@@ -29,8 +29,10 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
             val endTimeView = constraintLayout.getChildAt(3) as TextView
             val nameText = nameTextView.text
             val date=dateTextView.text
-            val start=startTimeView.text
-            val end=endTimeView.text
+            val runningTime=startTimeView.text
+            val start=runningTime.split("-")[0]
+            val end=runningTime.split("-")[1]
+            val week=endTimeView.text
 
             val intent: Intent = Intent(activity, TaskEditorActivity::class.java)
             intent.putExtra("ITEM_NAME", nameText)
@@ -64,8 +66,8 @@ class TaskAdapter(private val taskList: ArrayList<Task>, val activity: FragmentA
         val endTimeView = constraintLayout.getChildAt(3) as TextView
         nameTextView.text = taskList[position].name
         date.text=taskList[position].dateToDo
-        startTimeView.text=taskList[position].startTime
-        endTimeView.text=taskList[position].endTime
+        startTimeView.text="${taskList[position].startTime}-${taskList[position].endTime}"
+        endTimeView.text=taskList[position].week
 
     }
 
