@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SwitchCompat
-import com.example.timetablemanager.Global
+import com.example.timetablemanager.GlobalVariables
 import com.example.timetablemanager.R
 
 class SettingFragment : Fragment() {
@@ -29,10 +29,10 @@ class SettingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         notifSwitch=view.findViewById(R.id.notificationSwitch)
-        notifSwitch.isChecked=Global.notif
+        notifSwitch.isChecked=GlobalVariables.notif
 
         notifSwitch.setOnClickListener{
-            Global.notif=notifSwitch.isChecked
+            GlobalVariables.notif=notifSwitch.isChecked
         }
 
 

@@ -1,6 +1,6 @@
 package com.example.timetablemanager
 
-interface Global {
+interface GlobalVariables {
     companion object {
         var notif=true
     }

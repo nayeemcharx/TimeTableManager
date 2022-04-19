@@ -95,9 +95,13 @@ class TaskEditorActivity : AppCompatActivity() {
                 } else {
                     dbo.updateItem(dbo, oldTask, task)
                 }
-                if(Global.notif) {
+                if(GlobalVariables.notif) {
                     createNotificationChannel()
                     scheduleNotification()
+                }
+                else
+                {
+                    show("task saved")
                 }
                 //            val intent: Intent = Intent(this, MainActivity::class.java)
                 //            startActivity(intent)
@@ -116,7 +120,7 @@ class TaskEditorActivity : AppCompatActivity() {
     private fun scheduleNotification()
     {
         val intent = Intent(applicationContext, Notification::class.java)
-        val title = "TimeTable"
+        val title = "task alert"
         val message = taskName.text.toString()
         intent.putExtra(titleExtra, title)
         intent.putExtra(messageExtra, message)
@@ -145,7 +149,7 @@ class TaskEditorActivity : AppCompatActivity() {
         val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
 
         AlertDialog.Builder(this)
-                .setTitle("Notification Scheduled")
+                .setTitle("A notification is scheduled")
                 .setMessage(
                         "Title: " + title +
                                 "\nMessage: " + message +

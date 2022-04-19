@@ -13,6 +13,7 @@ import com.example.timetablemanager.R
 import com.example.timetablemanager.databaseHandler.DatabaseInfo
 import com.example.timetablemanager.databaseHandler.DatabaseOperations
 import com.example.timetablemanager.taskScheduler.Task
+import com.example.timetablemanager.taskViewer.adapters.TaskAdapter
 import java.util.*
 
 

@@ -1,4 +1,4 @@
-package com.example.timetablemanager.taskViewer
+package com.example.timetablemanager.taskViewer.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
