@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import com.example.timetablemanager.*
 import com.example.timetablemanager.notification.Notification
 import com.example.timetablemanager.databaseHandler.DatabaseOperations
@@ -23,6 +24,7 @@ class TaskEditorActivity : AppCompatActivity() {
     private lateinit var date:DatePicker
     private lateinit var saveButton:Button
     private lateinit var cancelButton:Button
+    private lateinit var routinezed:SwitchCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class TaskEditorActivity : AppCompatActivity() {
         date=findViewById(R.id.date_picker)
         saveButton=findViewById(R.id.save_button)
         cancelButton=findViewById(R.id.cancel_button)
+        routinezed=findViewById(R.id.routinized)
 
         var editingItem=false;
         val itemName = intent.getStringExtra("ITEM_NAME")
@@ -54,7 +57,7 @@ class TaskEditorActivity : AppCompatActivity() {
             endTime.hour=list[0].toInt()
             endTime.minute=list[1].toInt()
         }
-        Log.d("testing","${itemName} ${itemStart} ${itemEnd} ${itemDate}")
+        Log.d("testing","$itemName $itemStart $itemEnd $itemDate")
 
         lateinit var oldTask: Task
         if(editingItem)
@@ -91,7 +94,17 @@ class TaskEditorActivity : AppCompatActivity() {
                 val dbo = DatabaseOperations(this)
                 if (!editingItem) {
                     dbo.addItem(dbo, task)
-                    Log.d("testing:add successful",task.name)
+
+                    if(routinezed.isChecked)
+                    {
+                        for(i in 1..10)
+                        {
+                            val dateTodoAfter="${date.year}/${date.month+(i*7)}/${date.dayOfMonth}"
+                            val afterTask=Task(item,start,end,dateTodoAfter)
+                            dbo.addItem(dbo, afterTask)
+
+                        }
+                    }
                 } else {
                     dbo.updateItem(dbo, oldTask, task)
                 }
